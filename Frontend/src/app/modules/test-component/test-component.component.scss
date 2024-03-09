@@ -1,0 +1,13 @@
+.title-component{
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: center;
+}
+.content-component{
+    padding: var(--spacing-md);
+    text-align: center;
+    button{
+        margin: var(--spacing-sm);
+        
+    }
+}

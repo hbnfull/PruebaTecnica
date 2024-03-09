@@ -1,0 +1,22 @@
+.header {
+  background: var(--qs-qgray-50);
+  .comp-avatar{
+    margin-right: 0.625em;
+  }
+  .logout{
+    color: var(--qs-qgray-A400);
+    text-decoration: none;
+  }
+  .icono{
+    display: flex;
+    width: 32px;
+    height: 32px;
+    background: var(--qs-primary-900);
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    color: var(--qs-primary-100);
+    overflow: hidden;
+    margin-right: 0.625em;
+  }
+}

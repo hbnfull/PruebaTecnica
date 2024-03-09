@@ -1,0 +1,59 @@
+<app-header></app-header>
+<main>
+    <div class="container">
+        <div class="content-form m-auto">
+            <app-alert class="alert" *ngIf="authenticationError" data-cy="loginError"
+                type="danger" 
+                description="Tus datos son incorrectos pero puedes revisar y corregir."
+            ></app-alert>
+            <app-alert class="alert" *ngIf="accountLocked" data-cy="loginError"
+                type="danger" 
+                description="Datos Incorrectos"
+            ></app-alert>
+            <app-alert class="alert" *ngIf="obSession" data-cy="loginError"
+                type="danger" 
+                description="Error del servidor"
+            ></app-alert>
+            <mat-card class="form-login">
+                <mat-card-header class="form-logim-heading">
+                    <mat-card-title class="mat-headline-3 mb-2">¡Bienvenido!</mat-card-title>
+                    <mat-card-subtitle class="mat-subtitle-1 mb-0">Inicia sesión o registrate</mat-card-subtitle>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <form (ngSubmit)="login()" [formGroup]="loginForm">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Usuario</mat-label>
+                                    <input matInput type="text" name="username" id="username"
+                                        placeholder="Nombre de usuario" formControlName="username" #username
+                                        data-cy="username">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Contraseña</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'" name="password" id="password"
+                                        placeholder="Su contraseña" formControlName="password" data-cy="password">
+                                    <button *ngIf="hidden" mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="btn-actions">
+                            <button [disabled]="boton" mat-raised-button type="submit" [class.spinner]="loading" [disabled]="loading"  data-cy="submit" color="primary" class="btn-min-width" value="login">Entrar</button>
+                        </div>
+                        <div class="btn-actions">
+                            <button mat-stroked-button type="button" color="primary" value="liberar" (click)="register()">Registrate</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

@@ -1,0 +1,76 @@
+<app-header></app-header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 d-flex justify-content-between align-items-center pt-3 pb-3 flex-column flex-md-row">
+                <div class="avatar-welcone mb-3 mb-md-0">
+                    <p><strong><a href="/login">Regresar</a></strong></p>
+                    <br>
+                    <h3 class="mat-headline-5 mb-0">¿Que quieres vender?</h3>
+                </div>
+            </div>  
+        </div>
+        <div class="content-form m-auto">
+            <app-alert class="alert" *ngIf="productExist" data-cy="loginError"
+                type="danger" 
+                description="El producto ya existe"
+            ></app-alert>
+            <mat-card class="form-login">
+                <mat-card-header class="form-logim-heading">
+                    <mat-card-subtitle class="mat-subtitle-1 mb-0">Ingresa los datos del producto</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <form (ngSubmit)="sell()" [formGroup]="sellForm">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Nombre del producto</mat-label>
+                                    <input matInput type="text" name="producto" id="producto"
+                                        placeholder="producto" formControlName="producto" #producto
+                                        data-cy="producto">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Stock</mat-label>
+                                    <input matInput type="number" name="stock" id="stock"
+                                        placeholder="stock" formControlName="stock" #stock
+                                        data-cy="stock">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Precio</mat-label>
+                                    <input matInput type="number" name="precio" id="precio"
+                                        placeholder="precio" formControlName="precio" #precio
+                                        data-cy="precio">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Descripción</mat-label>
+                                    <textarea matInput type="text" name="descripcion" id="descripcion"
+                                        placeholder="descripcion" formControlName="descripcion" #descripcion
+                                        data-cy="descripcion"></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Imagen</mat-label>
+                                    <ngx-mat-file-input accept="image/*" name="imagen" id="imagen"
+                                    placeholder="imagen" formControlName="imagen" #imagen
+                                    data-cy="imagen" (ngModelChange)="inputFoto($event)"></ngx-mat-file-input>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="btn-actions">
+                            <button [disabled]="sellForm.invalid" mat-stroked-button type="button" color="primary" value="liberar" (click)="sell()">Publicar</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

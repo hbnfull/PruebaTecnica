@@ -1,0 +1,77 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@import './_palette';
+@import './_typography';
+@import './utils/generate-material-colors';
+
+@include mat.core();
+
+//$qualitas-sise-primary: mat.define-palette($qdorado-palette);
+//$qualitas-sise-accent: mat.define-palette($qmorado-palette, A200, A100, A400);
+//$qualitas-sise-warn: mat.define-palette($qverde-color);
+
+//$qualitas-sise-primary: mat.define-palette(mat.$indigo-palette);
+
+$qualitas-sise-primary: mat.define-palette($qmorado-palette, 800);
+$qualitas-sise-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$qualitas-sise-warn: mat.define-palette(mat.$red-palette);
+
+@function define-dark-theme($config) {
+    $theme: mat.define-dark-theme($config);
+    $color: map.get($theme, color);
+    $color: map.merge($color,
+        (background: $dark-theme-background-palette,
+            foreground: $dark-theme-foreground-palette,
+        ));
+    @return map.merge($theme,
+        (color: $color,
+        ));
+}
+
+@function define-light-theme($config) {
+    $theme: mat.define-light-theme($config);
+    $color: map.get($theme, color);
+    $color: map.merge($color,
+        (background: $light-theme-background-palette,
+            foreground: $light-theme-foreground-palette,
+        ));
+    @return map.merge($theme,
+        (color: $color,
+        ));
+}
+
+$qualitas-sise-theme: mat.define-light-theme((
+  color: (
+    primary:  $qualitas-sise-primary,
+    accent: $qualitas-sise-accent,
+    warn: $qualitas-sise-warn
+  ),
+  typography: $qualitas-sise-typography
+));
+
+@include mat.all-component-themes($qualitas-sise-theme);
+
+html[theme='light-theme'] {
+    //@include mat.all-component-colors($qualitas-sise-theme);
+    //@include custom-components-theme($qualitas-sise-theme);
+}
+
+@mixin typography($theme) {
+    $typography-config: mat.get-typography-config($theme);
+    
+    .font-display-xl-2 {
+        @include mat.typography-level($typography-config, 'label');
+    }
+    .font-body-s {
+        @include mat.typography-level($typography-config, 'font-body-s');
+    }
+    .font-label-s {
+        @include mat.typography-level($typography-config, 'font-label-s');
+    }
+}
+@include typography($qualitas-sise-theme);
+
+@include mat.all-component-typographies($qualitas-sise-typography);
+@include mat.core();
+@include generate-material-classes();

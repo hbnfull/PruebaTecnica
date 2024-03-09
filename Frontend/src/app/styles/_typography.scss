@@ -1,0 +1,52 @@
+@use '@angular/material' as mat;
+@use "sass:map";
+
+$font-display-xl-2: mat.define-typography-level(
+  $font-family: 'Montserrat, sans-serif',
+  $font-weight: 700,
+  $font-size: 5rem,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+$font-body-s: mat.define-typography-level(
+  $font-family: 'Montserrat, sans-serif',
+  $font-weight: 500,
+  $font-size: 0.750rem,
+  $line-height: 1rem,
+  $letter-spacing: 0.4px,
+);
+$font-label-s: mat.define-typography-level(
+  $font-family: 'Montserrat, sans-serif',
+  $font-weight: 600,
+  $font-size: 0.875rem,
+  $line-height: 1.250rem,
+  $letter-spacing: normal,
+);
+
+$qualitas-sise-typography: map.merge(
+
+  mat.define-typography-config(
+    $font-family: 'Montserrat, sans-serif',
+    $headline-1: mat.define-typography-level(5rem, 5rem, 700, $letter-spacing: -1px),
+    $headline-2: mat.define-typography-level(4rem, 4rem, 600, $letter-spacing: -0.5px),
+    $headline-3: mat.define-typography-level(2.5rem, 3.2rem, 600, $letter-spacing: -1.2px),
+    $headline-4: mat.define-typography-level(2rem, 2.5rem, 600, $letter-spacing: -0.5px),
+    $headline-5: mat.define-typography-level(1.5rem, 2rem, 600, $letter-spacing: 0px), // mat-h1
+    $headline-6: mat.define-typography-level(2rem, 2.5rem, 500), // mat-h2 opc
+    $subtitle-1: mat.define-typography-level(1rem, 1.5rem, 600, $letter-spacing: 0.15px), // mat-h3, Label
+    $subtitle-2: mat.define-typography-level(0.875rem, 1.250rem, 600, $letter-spacing: 0.15px), // cta-2
+    $body-1: mat.define-typography-level(0.875rem, 1.250rem, 500), // mat-h4
+    $body-2: mat.define-typography-level(1rem, 1.5rem, 500),
+    $caption: mat.define-typography-level(0.813rem, 1rem, 500, $letter-spacing: 0.3px),
+    $button: mat.define-typography-level(1rem, 1.5rem, 600, $letter-spacing: 0.15px)
+    ),
+    (
+        "label": $font-display-xl-2,
+        "font-body-s": $font-body-s,
+        "font-label-s": $font-label-s
+    )
+);
+
+
+

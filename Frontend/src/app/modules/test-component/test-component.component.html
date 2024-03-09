@@ -1,0 +1,109 @@
+<main>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="title-component">Buttons Qualitas</h2>
+      </div>
+      <div class="col-12 col-md-4">
+        <h4 class="title-component">Button Basic</h4>
+        <div class="content-component">
+          <button mat-button color="primary">Primary</button>
+          <button mat-button color="primary" class="hover">Primary Hover</button>
+          <button mat-button color="primary" disabled>Primary disabled</button>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <h4 class="title-component">Button Fill</h4>
+        <div class="content-component">
+          <button mat-raised-button color="primary">Primary</button>
+          <button mat-raised-button color="primary" class="hover">Primary Hover</button>
+          <button mat-raised-button color="primary" disabled>Primary disabled</button>
+
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <h4 class="title-component">Button Outline</h4>
+        <div class="content-component">
+          <button mat-stroked-button color="primary">Primary</button>
+          <button mat-stroked-button color="primary" class="hover">Primary hover</button>
+          <button mat-stroked-button color="primary" disabled>Primary disabled</button>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <h4 class="title-component">Button Basic Icon</h4>
+        <div class="content-component">
+          <button mat-button color="primary"><mat-icon>arrow_forward</mat-icon>Primary</button>
+          <button mat-button color="primary" class="hover"><mat-icon>arrow_forward</mat-icon>Primary
+            Hover</button>
+          <button mat-button color="primary" disabled>Primary disabled</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-12">
+        <h3 class="title-component">Buttons Rounded</h3>
+      </div>
+      <div class="col-12 col-md-4">
+        <h4 class="title-component">Button Fill</h4>
+        <div class="content-component">
+          <button mat-raised-button color="primary" class="rounded">Primary</button>
+          <button mat-raised-button color="primary" class="hover rounded">Primary Hover</button>
+          <button mat-raised-button color="primary" class="rounded" disabled>Primary disabled</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-12">
+        <mat-checkbox color="primary" class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
+        <mat-checkbox color="primary" class="example-margin" [(ngModel)]="indeterminate">Indeterminate</mat-checkbox>
+        <br />
+        <mat-radio-group [(ngModel)]="labelPosition">
+          <mat-radio-button color="primary" class="example-margin" value="after">After</mat-radio-button>
+          <mat-radio-button color="primary" class="example-margin" value="before">Before</mat-radio-button>
+        </mat-radio-group>
+        <br />
+        <mat-slide-toggle color="primary"></mat-slide-toggle>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-12">
+        <app-alert class="alert" type="info" title="Título de alerta"
+          description="Párrafo secundario para colocar información adicional." link="#" textLink="Agregar Link">
+        </app-alert>
+        <app-alert class="alert" type="danger" title="Título de alerta"
+          description="Párrafo secundario para colocar información adicional." link="#" textLink="Agregar Link">
+        </app-alert>
+        <app-alert class="alert" type="warning" description="Párrafo secundario para colocar información adicional.">
+        </app-alert>
+        <app-alert class="alert" type="dark" description="Párrafo secundario para colocar información adicional.">
+        </app-alert>
+
+
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-12">
+        <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <mat-form-field class="example-form-field">
+              <mat-label>Clearable input</mat-label>
+              <input matInput type="text" formControlName="testControl">
+              <mat-icon color="warn" matSuffix *ngIf="testForm.get('testControl')?.invalid && testForm.get('testControl')?.touched">error</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="form-group"> 
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</main>

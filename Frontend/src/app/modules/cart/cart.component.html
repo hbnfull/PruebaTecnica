@@ -1,0 +1,83 @@
+<app-header></app-header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 d-flex justify-content-between align-items-center pt-3 pb-3 flex-column flex-md-row">
+                <div class="avatar-welcone mb-3 mb-md-0">
+                    <p><strong><a href="/login">Regresar</a></strong></p>
+                    <br>
+                    <h3 class="mat-headline-5 mb-0">¿Que quieres vender?</h3>
+                </div>
+            </div>  
+        </div>
+        <div class="content-form m-auto">
+            <app-alert class="alert" *ngIf="productExist" data-cy="loginError"
+                type="danger" 
+                description="El correo ya esta registrado"
+            ></app-alert>
+            <mat-card class="form-login">
+                <mat-card-header class="form-logim-heading">
+                    <mat-card-subtitle class="mat-subtitle-1 mb-0">Ingresa los datos del producto</mat-card-subtitle>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <form (ngSubmit)="cart()" [formGroup]="cartForm">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput type="text" name="nombre" id="nombre"
+                                        placeholder="Nombre" formControlName="nombre" #nombre
+                                        data-cy="nombre">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Apellido</mat-label>
+                                    <input matInput type="text" name="apellido" id="apellido"
+                                        placeholder="Apellido" formControlName="apellido" #apellido
+                                        data-cy="apellido">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>email</mat-label>
+                                    <input matInput type="mail" name="email" id="email"
+                                        placeholder="Email" formControlName="email" #email
+                                        data-cy="email">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Contraseña</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'" name="password" id="password"
+                                        placeholder="Su contraseña" formControlName="password" data-cy="password">
+                                    <button *ngIf="hidden" mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Repite tu ontraseña</mat-label>
+                                    <input matInput [type]="hide ? 'rpassword' : 'text'" name="rpassword" id="rpassword"
+                                        placeholder="Repite tu contraseña" formControlName="rpassword" data-cy="rpassword">
+                                    <button *ngIf="hidden" mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="btn-actions">
+                            <button mat-stroked-button type="button" color="primary" value="liberar" (click)="cart()">Registrate</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

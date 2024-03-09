@@ -1,0 +1,11 @@
+<div *ngFor="let item of items; let i = index">
+	<a [routerLink]="item.url" class="tab-step" [ngClass]="getStatus(i).statusClass" (click)="seleccionarPestana($event, i)">
+		<div class="number font-label-s">
+			{{item.numberStep}}
+		</div>
+		<div class="detail">
+			<h3 class="mat-body-2">{{item.title}}</h3>
+			<span class="status font-body-s" >{{getStatus(i).statusText}}</span>
+		</div>
+	</a>
+</div>

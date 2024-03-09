@@ -1,0 +1,11 @@
+.button-actions{
+  border-top: 1px solid var(--qs-qgray-700);
+  padding: var(--spacing-md) 0;
+
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 3;
+}

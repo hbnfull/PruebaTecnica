@@ -1,0 +1,42 @@
+<app-header></app-header>
+<main class="main-dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div *ngIf="login.logged" class="col-xs-12 col-md-12 d-flex justify-content-between align-items-center pt-3 pb-3 flex-column flex-md-row">
+                    <div class="avatar-welcone mb-3 mb-md-0">
+                        <button mat-stroked-button type="button" color="primary" class="rounded" (click)="sell()"><mat-icon fontIcon="add"></mat-icon>Vender</button>
+                    </div>
+                    <button mat-stroked-button type="button" color="primary" class="rounded" (click)="buyList()"><mat-icon fontIcon="add_shopping_cart"></mat-icon>Mis compras</button>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 mt-4 mb-4"> 
+                <div *ngIf="isContentReady" class="content-dashboard">
+                    <mat-card class="card card-dashboard" *ngFor="let card of content.cards">
+                        <div>
+                            <div class="image">
+                                <img src="/assets/images/png{{card.image}}"/>
+                            </div>
+                        </div>  
+                        <div class="detail">
+                            <h3 class="mat-headline-5 mb-3">{{card.product}}</h3>
+                            <p class="font-body-s">{{card.description}}</p>
+                            <h3 class="mat-headline-5 mb-3">${{card.price}}</h3>
+                            <p class="font-body-s">Cantidad: {{card.stock}}</p>
+                        </div>
+                        <div class="action">
+                            <button (click)="buyList(card.product);" mat-raised-button type="submit" data-cy="submit" color="primary" class="rounded">Comprar</button>
+                        </div>
+                        <br>
+                        <div class="action">
+                            <button (click)="del(card.product);" mat-raised-button type="submit" data-cy="submit" color="secundary" class="rounded">Eliminar</button>
+                        </div>   
+                    </mat-card>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+<app-footer></app-footer>

@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.card{
+  border-radius: 24px;
+  padding: 1.5em;
+}
+
+.btn-min-width{
+  min-width: 200px;
+}
+
+
+.breadcrumb {
+  padding: var(--spacing-md) 0;
+  list-style: none;
+  margin-bottom: 0;
+  li {
+      display: inline;
+      a {
+          text-decoration: none;
+          &:hover {
+              color: #01447e;
+          }
+      }
+      &+li:before {
+          padding: 8px;
+          color: black;
+          content: "/\00a0";
+      }
+
+  }
+}
+
+.mat-datepicker-content .mat-calendar{
+  height: 375px !important;
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+.float-right{
+  float: right;
+}
+
+.border-radius-24{
+  border-radius: 24px !important;
+}
+
+.mat-mdc-form-field-error{
+    font-family: var(--mat-form-field-subscript-text-font);
+    line-height: var(--mat-form-field-subscript-text-line-height);
+    font-size: var(--mat-form-field-subscript-text-size);
+    letter-spacing: var(--mat-form-field-subscript-text-tracking);
+    font-weight: var(--mat-form-field-subscript-text-weight);
+}

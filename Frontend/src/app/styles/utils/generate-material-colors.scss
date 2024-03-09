@@ -1,0 +1,38 @@
+@use '../palette';
+
+@mixin generateColors($prefix, $palette) {
+  $colors-map: ();
+
+  @each $key,
+  $value in $palette {
+    @if $key !=contrast {
+      .qs-#{$prefix}-#{$key} {
+        color: map-get($palette, $key);
+      }
+
+      $map: (
+      );
+    $map: map-merge($map, ($key: $value));
+    $colors-map: map-merge($colors-map, $map);
+  }
+}
+
+:root {
+
+  @each $key,
+  $value in $colors-map {
+    --qs-#{$prefix}-#{$key}: #{$value};
+  }
+}
+}
+
+@mixin generate-material-classes {
+  @include generateColors(primary, $qmorado-palette);
+  @include generateColors(accent, $qdorado-palette);
+  @include generateColors(warning, $qverde-palette);
+  @include generateColors(qgray, $grey-palette);
+  @include generateColors(qred, $red-palette);
+  @include generateColors(qyellow, $yellow-palette);
+  @include generateColors(qgreen, $green-palette);
+  @include generateColors(qblue, $blue-palette);
+}
